@@ -6,7 +6,7 @@ const cors = require("cors");
 const { addUser, getUser } = require("./user");
 const { SocketAddress } = require("net");
 
-const app = new Koa();
+const app = express();
 const server = http.createServer(app.callback());
 const io = socket(server, {
   cors: {
@@ -14,6 +14,7 @@ const io = socket(server, {
   },
 });
 app.use(cors());
+app.use(express.json());
 
 const SERVER_HOST = "localhost";
 const SERVER_PORT = 8080;
