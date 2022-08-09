@@ -3,7 +3,6 @@ const socket = require("socket.io");
 const express = require("express");
 const cors = require("cors");
 const { addUser, getUser } = require("./user");
-const { SocketAddress } = require("net");
 
 const app = express();
 const server = http.createServer(app.callback());
@@ -19,6 +18,8 @@ app.use((req, res, next) => {
   app.use(cors());
   next();
 });
+
+app.use(express.json());
 
 const SERVER_HOST = "localhost";
 const SERVER_PORT = 8080;
