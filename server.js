@@ -13,6 +13,7 @@ const io = socket(server, {
     origin: "*",
   },
 });
+app.use(cors());
 
 const SERVER_HOST = "localhost";
 const SERVER_PORT = 8080;
