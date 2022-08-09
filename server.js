@@ -1,4 +1,3 @@
-const Koa = require("koa");
 const http = require("http");
 const socket = require("socket.io");
 const express = require("express");
@@ -13,8 +12,13 @@ const io = socket(server, {
     origin: "*",
   },
 });
-app.use(cors());
-app.use(express.json());
+
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Methods", "GET, PUT, POST");
+  app.use(cors());
+  next();
+});
 
 const SERVER_HOST = "localhost";
 const SERVER_PORT = 8080;
