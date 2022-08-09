@@ -15,6 +15,7 @@ const io = socket(server, {
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Methods", "GET, PUT, POST");
+  res.header("Access-Control-Allow-Headers: X-PINGOTHER, Content-Type");
   app.use(cors());
   next();
 });
